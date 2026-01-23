@@ -11,8 +11,8 @@ router.get('/', async(req: express.Request, res: express.Response) => {
     try {
         const { search, department, page=1, limit=10 } = req.query;
 
-        const currentPage = Math.max(1, +page);
-        const limitPerPage = Math.max(1,+limit);
+        const currentPage = Math.max(1, parseInt(String(page), 10) || 1);
+        const limitPerPage = Math.min(Math.max(1,parseInt(String(limit),10)||10),100);
 
         //offset is the number of records to skips per page
         const offset = (currentPage - 1) * limitPerPage;
@@ -29,7 +29,9 @@ router.get('/', async(req: express.Request, res: express.Response) => {
 
         }
         if(department){
-            filterConditions.push(ilike(departments.name,`%${department}%`));
+            const deptPattern = `%${String(department).replace(/[%_]/g, '\\$&')}%`;
+
+            filterConditions.push(ilike(departments.name,deptPattern));
         }
 
         //combine all filters using AND if any exists
