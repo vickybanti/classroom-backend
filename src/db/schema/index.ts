@@ -1,4 +1,4 @@
 // @ts-ignore
-export * from './app.ts'
+export * from './app.js'
 // @ts-ignore
-export * from './auth.ts'
+export * from './auth.js'
