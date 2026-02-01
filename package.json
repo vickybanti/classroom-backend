@@ -15,7 +15,11 @@
     "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
+    "@arcjet/inspect": "^1.0.0",
+    "@arcjet/node": "^1.0.0",
     "@neondatabase/serverless": "^1.0.2",
+    "apminsight": "^5.2.1",
+    "better-auth": "^1.4.18",
     "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
