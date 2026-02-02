@@ -10,7 +10,7 @@ import {auth} from "./lib/auth.js";
 
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 
 if(!process.env.FRONTEND_URL) throw new Error("No URL provided");
 app.use(cors({
