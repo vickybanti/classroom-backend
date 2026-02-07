@@ -56,6 +56,7 @@ export const classes = pgTable('classes', {
 ]);
 
 export const enrollments = pgTable('enrollments', {
+    id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
     studentId: text('student_id').notNull().references(() => user.id, { onDelete: 'cascade' }),
     classId: integer('class_id').notNull().references(() => classes.id, { onDelete: 'cascade' }),
 }, (table) => [
