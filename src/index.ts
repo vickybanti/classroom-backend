@@ -19,13 +19,14 @@ import { auth } from "./lib/auth.js";
 const app = express();
 const PORT = 8000;
 
-app.use(
-    cors({
-        origin: process.env.FRONTEND_URL, // React app URL
-        methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
-        credentials: true, // allow cookies
-    })
-);
+app.use(cors({
+    origin: "https://classroom-two-kappa.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+}));
+
+// ✅ Exp
 app.options("*", cors());
 
 app.all("/api/auth/*splat", toNodeHandler(auth));
